@@ -8,7 +8,7 @@ parser.read('pipeline.conf')
 hostname = parser.get('mysql_config', 'hostname')
 port = parser.get('mysql_config', 'port')
 username = parser.get('mysql_config', 'username')
-dbname = parser.get('mysql_config', 'dbname')
+dbname = parser.get('mysql_config', 'database')
 password = parser.get('mysql_config', 'password')
 
 conn = pymysql.connect(host=hostname,
@@ -22,7 +22,7 @@ else:
     print("Connected to MySQL")
 
 m_query = "SELECT * FROM Orders;"
-local_filename = "order_extract.csv"
+local_filename = "order_extract_mysql_full.csv"
 
 m_cursor = conn.cursor()
 m_cursor.execute(m_query)
